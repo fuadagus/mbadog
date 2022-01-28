@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mbadog/constant.dart';
 import 'package:mbadog/screens/homescreen.dart';
 
 void main() {
@@ -10,6 +11,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScreen();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: primaryColor,
+              onPrimary: Colors.black,
+              secondary: secondaryColor,
+            ),
+        textTheme: mbadogTextTheme,
+      ),
+      home: HomeScreen(),
+    );
   }
 }

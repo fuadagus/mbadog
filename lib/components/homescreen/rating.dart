@@ -9,7 +9,23 @@ class RestaurantRating extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Text(_restaurantList[ratingIndex]["rating"].toString()),
+      child: Text.rich(
+        TextSpan(
+          children: [
+            WidgetSpan(
+              child: Icon(
+                Icons.star,
+                size: 15,
+              ),
+            ),
+            TextSpan(
+              text: _restaurantList[ratingIndex]["rating"].toString(),
+            ),
+          ],
+        ),
+        style: Theme.of(context).textTheme.subtitle1,
+        textAlign: TextAlign.start,
+      ),
     );
   }
 }

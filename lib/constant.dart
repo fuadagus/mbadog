@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color primaryColor = Color(0xFFFFFFFF);
-const Color secondaryColor = Color(0xFF6B38FB);
+const Color primaryColor = Color(0xffffb700);
+const Color secondaryColor = Color(0xffdc7901);
 
 final TextTheme mbadogTextTheme = TextTheme(
   headline1: GoogleFonts.lato(
@@ -16,7 +16,7 @@ final TextTheme mbadogTextTheme = TextTheme(
   headline6: GoogleFonts.lato(
       fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15),
   subtitle1: GoogleFonts.lato(
-      fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+      fontSize: 15, fontWeight: FontWeight.w300, letterSpacing: 0.15),
   subtitle2: GoogleFonts.lato(
       fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.1),
   bodyText1: GoogleFonts.libreFranklin(

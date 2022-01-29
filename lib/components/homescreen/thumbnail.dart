@@ -8,10 +8,11 @@ class Thumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width / 2,
+    return SizedBox(
+      height: 80,
+      width: 120,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
         child: Image.network(
           _restaurantList[pictureIndex]["pictureId"],
           fit: BoxFit.cover,

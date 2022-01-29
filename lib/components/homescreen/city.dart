@@ -10,8 +10,21 @@ class RestaurantCity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Text(
-        _restaurantList[cityIndex]["city"],
+      child: Text.rich(
+        TextSpan(
+          children: [
+            WidgetSpan(
+              child: Icon(
+                Icons.location_pin,
+                size: 15,
+              ),
+            ),
+            TextSpan(
+              text: _restaurantList[cityIndex]["city"],
+            ),
+          ],
+        ),
+        style: Theme.of(context).textTheme.subtitle1,
         textAlign: TextAlign.start,
       ),
     );

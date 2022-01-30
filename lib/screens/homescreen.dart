@@ -4,6 +4,8 @@ import 'package:mbadog/components/homescreen/name.dart';
 import 'package:mbadog/components/homescreen/rating.dart';
 import 'package:mbadog/components/homescreen/thumbnail.dart';
 import 'package:mbadog/model.dart';
+import 'package:get/get.dart';
+import 'package:mbadog/screens/detailscreen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -13,7 +15,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mbadog"),
+        title: SizedBox(
+          height: MediaQuery.of(context).padding.top + kToolbarHeight,
+          child: Image.asset(
+            "assets/images/logooutline.png",
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
@@ -25,8 +33,20 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.topLeft,
-                    child: Text(
-                      "Restaurants List",
+                    child: Text.rich(
+                      TextSpan(
+                        children: [
+                          WidgetSpan(
+                            child: Icon(
+                              Icons.recommend,
+                              size: 30,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "Recomendation",
+                          )
+                        ],
+                      ),
                       style: Theme.of(context).textTheme.headline5,
                       textAlign: TextAlign.left,
                     ),
@@ -34,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Recomendation restaurant for you!",
+                      "restaurants recommendation for you!",
                       style: Theme.of(context).textTheme.caption,
                     ),
                   )
@@ -48,33 +68,36 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(left: 24.0, top: 8, bottom: 8),
-                  child: SizedBox(
-                      height: 80,
-                      width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        children: [
-                          Thumbnail(index),
-                          Container(
-                            child: Expanded(
-                                child: Padding(
-                              padding: const EdgeInsets.only(left: 12.0),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    children: [
-                                      RestaurantName(index),
-                                      RestaurantCity(index),
-                                    ],
-                                  ),
-                                  RestaurantRating(index),
-                                ],
-                              ),
-                            )),
-                          )
-                        ],
-                      )),
+                  child: InkWell(
+                    onTap: () => Get.to(DetailScreen(index)),
+                    child: SizedBox(
+                        height: 80,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: [
+                            Thumbnail(index),
+                            Container(
+                              child: Expanded(
+                                  child: Padding(
+                                padding: const EdgeInsets.only(left: 12.0),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        RestaurantName(index),
+                                        RestaurantCity(index),
+                                      ],
+                                    ),
+                                    RestaurantRating(index),
+                                  ],
+                                ),
+                              )),
+                            )
+                          ],
+                        )),
+                  ),
                 );
               },
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const Color primaryColor = Color(0xffffb700);
+const Color primaryTransparant = Color(0x33ffb700);
 const Color secondaryColor = Color(0xffdc7901);
 
 final TextTheme mbadogTextTheme = TextTheme(
